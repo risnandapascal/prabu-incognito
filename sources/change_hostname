@@ -1,0 +1,17 @@
+change_hostname() {
+    local hostnames=("DESKTOP" "LAPTOP" "WIN" "WIN11" "PC")
+    local random_index=$((RANDOM % ${#hostnames[@]}))
+    
+    local random_characters=("A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9")
+
+    local random_hostname_part=""
+    for ((i=0; i<8; i++)); do
+        random_hostname_part="${random_hostname_part}${random_characters[$((RANDOM % ${#random_characters[@]}))]}"
+    done
+    
+    local new_hostname="${hostnames[$random_index]}-${random_hostname_part}"
+    
+    sudo hostnamectl set-hostname "$new_hostname"
+    
+    echo -e "${GREEN}[*] Hostname changed to $new_hostname${NC}"
+}

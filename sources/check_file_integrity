@@ -1,0 +1,4 @@
+check_file_integrity() {
+    echo -e "${GREEN}[*] Checking file integrity...${NC}"
+    sudo debsums -c
+}

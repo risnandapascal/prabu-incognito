@@ -1,0 +1,6 @@
+monitor_traffic() {
+    local interface="$1"
+
+    echo -e "${GREEN}[*] Monitoring network traffic on interface $interface...${NC}"
+    sudo tcpdump -i "$interface" -n -vvv -c 50
+}

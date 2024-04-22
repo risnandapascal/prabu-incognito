@@ -1,0 +1,17 @@
+manage_shadow() {
+    local argument="$1"
+
+    if [ -z "$argument" ]; then
+        perl ./shadow.pl
+        return
+    fi
+
+    case $argument in
+        help|install|status|start|stop|restart)
+            perl ./shadow.pl "$argument"
+            ;;
+        *)
+            echo -e "${RED}[!] Error: Invalid Shadow command.${NC}"
+            ;;
+    esac
+}

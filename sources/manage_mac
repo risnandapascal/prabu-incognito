@@ -1,0 +1,53 @@
+manage_mac() {
+    local interface="$1"
+
+    while true; do
+        clear
+        echo "===== MAC Address Management ====="
+        echo "1. Change MAC address"
+        echo "2. Reset MAC address"
+        echo "3. Back to Main Menu"
+        echo "=================================="
+        read -p "Choose an option (1-3): " choice
+
+        case $choice in
+            1) change_mac "$interface" ;;
+            2) reset_mac "$interface" ;;
+            3) break ;;
+            *) echo "Choose the available option." ;;
+        esac
+    done
+}
+
+change_mac() {
+    local interface="$1"
+
+    if ! ip link show "$interface" &>/dev/null; then
+        echo -e "${RED}[!] Error: Interface $interface not found.${NC}"
+        return 1
+    fi
+
+    local new_mac=$(printf '02:%02X:%02X:%02X:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256)) $((RANDOM%256)) $((RANDOM%256)) $((RANDOM%256)))
+    local original_mac=$(ip link show "$interface" | awk '/ether/ {print $2}')
+
+    sudo ifconfig "$interface" down
+    sudo ifconfig "$interface" hw ether "$new_mac"
+    sudo ifconfig "$interface" up
+
+    echo -e "${GREEN}[*] MAC address changed from $original_mac to $new_mac${NC}"
+}
+
+reset_mac() {
+    local interface="$1"
+
+    if ! ip link show "$interface" &>/dev/null; then
+        echo -e "${RED}[!] Error: Interface $interface not found.${NC}"
+        return 1
+    fi
+
+    sudo ifconfig "$interface" down
+    sudo macchanger -p "$interface"
+    sudo ifconfig "$interface" up
+
+    echo -e "${GREEN}[*] MAC address reset to original.${NC}"
+}

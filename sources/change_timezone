@@ -1,0 +1,45 @@
+change_timezone() {
+    while true; do
+        clear
+        echo "***************************************************************"
+        echo "*                      Change Timezone                        *"
+        echo "***************************************************************"
+        echo ""
+        echo -e "${GREEN}[1] Change to Random Timezone${NC}"
+        echo -e "${GREEN}[2] Reset to Default Timezone${NC}"
+        echo -e "${GREEN}[3] Back to Main Menu${NC}"
+
+        read -p "$(echo -e "${YELLOW}[?] Enter your choice (1-3): ${NC}")" tz_choice
+
+        case $tz_choice in
+            1)
+                change_to_random_timezone
+                ;;
+            2)
+                reset_to_default_timezone
+                ;;
+            3)
+                return
+                ;;
+            *)
+                echo -e "${RED}[!] Choose the available option.${NC}"
+                ;;
+        esac
+    done
+}
+
+change_to_random_timezone() {
+    timezones=("America/New_York" "Europe/London" "Asia/Tokyo" "Australia/Sydney")
+
+    random_tz=${timezones[RANDOM % ${#timezones[@]}]}
+
+    sudo timedatectl set-timezone $random_tz
+
+    echo -e "${GREEN}[*] Timezone changed to: $random_tz.${NC}"
+}
+
+reset_to_default_timezone() {
+    sudo timedatectl set-timezone "$(cat /etc/timezone)"
+
+    echo -e "${GREEN}[*] Timezone reset to default.${NC}"
+}

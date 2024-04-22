@@ -1,0 +1,4 @@
+run_riseup_vpn() {
+    echo -e "${GREEN}[*] Starting Riseup VPN...${NC}"
+    riseup-vpn
+}

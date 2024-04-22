@@ -1,0 +1,41 @@
+manage_metadata() {
+    clear
+    echo "***************************************************************"
+    echo "*                      MANAGE METADATA                        *"
+    echo "***************************************************************"
+    echo ""
+    echo -e "${GREEN}[1] Clean Metadata${NC}"
+    echo -e "${GREEN}[2] Read Metadata${NC}"
+    echo -e "${GREEN}[3] Back to Main Menu${NC}"
+
+    read -p "$(echo -e "${YELLOW}[?] Enter your choice (1-3): ${NC}")" metadata_choice
+
+    case $metadata_choice in
+        1)
+            clean_metadata
+            ;;
+        2)
+            read_metadata
+            ;;
+        3)
+            return
+            ;;
+
+        *)
+            echo -e "${RED}[!] Choose the available option.${NC}"
+            ;;
+    esac
+
+    read -p "$(echo -e "${GREEN}[*] Press [Enter] to return to the main menu...${NC}")"
+}
+
+clean_metadata() {
+    read -p "$(echo -e "${YELLOW}[?] Enter file path: ${NC}")" file_path
+    exiftool -all= "$file_path"
+    echo -e "${GREEN}[+] Metadata cleaned successfully.${NC}"
+}
+
+read_metadata() {
+    read -p "$(echo -e "${YELLOW}[?] Enter file path: ${NC}")" file_path
+    exiftool "$file_path"
+}

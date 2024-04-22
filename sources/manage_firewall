@@ -1,0 +1,28 @@
+manage_firewall() {
+    echo "=== Firewall Management ==="
+    echo "1. Configure Firewall"
+    echo "2. Show Firewall Status"
+    echo "3. Back to Main Menu"
+
+    read -p "Choose an option: " user_choice
+
+    case $user_choice in
+        1) configure_firewall ;;
+        2) show_firewall_status ;;
+        3) echo "Returning to Main Menu..." ;;
+        *) echo "Choose the available option." ;;
+    esac
+}
+
+configure_firewall() {
+    sudo ufw default deny incoming
+    sudo ufw default allow outgoing
+    sudo ufw allow ssh
+    sudo ufw enable
+    echo -e "${GREEN}[*] Firewall configured to block incoming traffic except for SSH.${NC}"
+}
+
+show_firewall_status() {
+    echo -e "${GREEN}[*] Firewall Status:${NC}"
+    sudo ufw status verbose
+}
