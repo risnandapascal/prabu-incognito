@@ -11,7 +11,7 @@ Prabu Incognito (raja yang menyamar) adalah kumpulan alat yang berfokus pada pri
 | Change Hostname          | Mengganti nama host dengan nama acak untuk bersembunyi.                                                         |
 | Change Timezone          | Mengubah zona waktu untuk menghindari kebocoran lokasi dari jam sistem.                                         |
 | MAC Changer              | Mengubah MAC Address secara acak pada interface jaringan yang ditentukan dan me-reset MAC Address ke default.    |
-| Shadow service (Nipe)    | Menginstal, memeriksa status, memulai, menghentikan, atau me-restart layanan TOR.                              |
+| Shadow Service           | Menginstal, memeriksa status, memulai, menghentikan, atau me-restart layanan TOR. Fitur ini berdasarkan [Nipe](https://github.com/htrgouvea/nipe)                              |
 | Riseup VPN               | Menjalankan Riseup VPN.                                                                                        |
 | Manage Metadata          | Menghapus dan membaca metadata file.                                                                            |
 
@@ -50,7 +50,7 @@ Prabu Incognito (raja yang menyamar) adalah kumpulan alat yang berfokus pada pri
    ```
 1. **Pilih opsi yang akan digunakan.**
 
-2. **instruksi untuk layanan Shadow:**
+2. **instruksi untuk layanan Shadow :**
    ```bash
    help
    ```
