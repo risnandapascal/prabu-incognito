@@ -19,6 +19,7 @@ source sources/security_tools/check_file_integrity
 source sources/security_tools/generate_password
 source sources/security_tools/manage_firewall
 source sources/security_tools/monitor_traffic
+source sources/security_tools/rkhunter
 source sources/security_tools/display_error_message
 
 main_menu() {
@@ -107,7 +108,8 @@ security_menu() {
         echo -e "${GREEN}[2] Monitor Network Traffic${NC}"
         echo -e "${GREEN}[3] Check File Integrity${NC}"
         echo -e "${GREEN}[4] Generate Strong Password${NC}"
-        echo -e "${GREEN}[5] Back to Main Menu${NC}"
+        echo -e "${GREEN}[5] Run Rootkit Hunter${NC}"
+        echo -e "${GREEN}[6] Back to Main Menu${NC}"
 
         read -p "$(echo -e "${YELLOW}[?] Enter your choice: ${NC}")" choice
 
@@ -116,13 +118,18 @@ security_menu() {
             2)  read -p "$(echo -e "${YELLOW}[?] Enter interface name to monitor (e.g., eth0, wlan0): ${NC}")" interface
                 monitor_traffic "$interface" ;;
             3)  check_file_integrity ;;
-            4)  echo -e "${GREEN}[*] Generated Strong Password: $(generate_password)${NC}" ;;
-            5)  return ;;
+            4)  read -p "$(echo -e "${YELLOW}[?] Enter desired password length: ${NC}")" password_length
+                new_password=$(generate_password $password_length)
+                echo "Your new strong password is: $new_password"
+                ;;
+            5)  run_rkhunter ;;
+            6)  return ;;
             *)  echo -e "${RED}[!] Choose the available option.${NC}" ;;
         esac
 
         read -p "$(echo -e "${GREEN}[*] Press [Enter] to return to the security tools menu...${NC}")"
     done
 }
+
 
 main_menu

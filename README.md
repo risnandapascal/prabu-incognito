@@ -11,7 +11,7 @@ Prabu Incognito (raja yang menyamar) adalah kumpulan alat yang berfokus pada pri
 | Change Hostname          | Mengganti nama host dengan nama acak untuk bersembunyi.                                                         |
 | Change Timezone          | Mengubah zona waktu untuk menghindari kebocoran lokasi dari jam sistem.                                         |
 | MAC Changer              | Mengubah MAC Address secara acak pada interface jaringan yang ditentukan dan me-reset MAC Address ke default.    |
-| Shadow Service           | Menginstal, memeriksa status, memulai, menghentikan, atau me-restart layanan TOR. Fitur ini berdasarkan [Nipe](https://github.com/htrgouvea/nipe)                              |
+| Shadow Service           | Menginstal, memeriksa status, memulai, menghentikan, atau me-restart layanan TOR. Fitur ini berdasarkan [Nipe](https://github.com/htrgouvea/nipe).                              |
 | Riseup VPN               | Menjalankan Riseup VPN.                                                                                        |
 | Manage Metadata          | Menghapus dan membaca metadata file.                                                                            |
 
@@ -21,8 +21,8 @@ Prabu Incognito (raja yang menyamar) adalah kumpulan alat yang berfokus pada pri
 | Firewall                 | Mengkonfigurasi firewall sistem untuk memblokir lalu lintas masuk, kecuali untuk SSH, dan memberikan informasi tentang aturan yang diterapkan. |
 | Monitor Network Traffic  | Memantau untuk mendeteksi aktivitas yang mencurigakan atau memahami lalu lintas jaringan yang sedang berlangsung. |
 | Check File Integrity     | Memeriksa integritas file sistem untuk mendeteksi perubahan yang tidak sah.                                      |
-| Generate Strong Password       | Membuat password yang kuat dan acak secara otomatis.                                                            |
-
+| Generate Strong Password | Membuat password yang kuat dan acak secara otomatis.                                                             |
+| Run Rootkit Hunter       | Memeriksa sistem untuk mendeteksi kemungkinan adanya rootkit dan malware.                                      |
 
 ## Prasyarat
 

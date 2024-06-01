@@ -7,4 +7,5 @@ sudo apt install -y riseup-vpn
 sudo apt install -y ufw
 sudo apt install -y debsums
 sudo apt install -y exiftool
+sudo apt install -y rkhunter
 sudo cpan install Try::Tiny Config::Simple JSON
