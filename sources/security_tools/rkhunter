@@ -1,6 +1,7 @@
 # Function to run Rootkit Hunter
 run_rkhunter() {
     echo -e "${GREEN}[*] Running Rootkit Hunter...${NC}"
+    rkhunter --propupd
     rkhunter --check
     echo -e "${GREEN}[*] Rootkit Hunter scan completed.${NC}"
 }

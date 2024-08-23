@@ -8,4 +8,5 @@ sudo apt install -y ufw
 sudo apt install -y debsums
 sudo apt install -y exiftool
 sudo apt install -y rkhunter
+sudo apt install -y htop
 sudo cpan install Try::Tiny Config::Simple JSON

@@ -21,6 +21,7 @@ source sources/security_tools/manage_firewall
 source sources/security_tools/monitor_traffic
 source sources/security_tools/rkhunter
 source sources/security_tools/display_error_message
+source sources/security_tools/system-monitor
 
 main_menu() {
     while true; do
@@ -109,7 +110,8 @@ security_menu() {
         echo -e "${GREEN}[3] Check File Integrity${NC}"
         echo -e "${GREEN}[4] Generate Strong Password${NC}"
         echo -e "${GREEN}[5] Run Rootkit Hunter${NC}"
-        echo -e "${GREEN}[6] Back to Main Menu${NC}"
+        echo -e "${GREEN}[6] System Monitor${NC}"
+        echo -e "${GREEN}[7] Back to Main Menu${NC}"
 
         read -p "$(echo -e "${YELLOW}[?] Enter your choice: ${NC}")" choice
 
@@ -123,7 +125,8 @@ security_menu() {
                 echo "Your new strong password is: $new_password"
                 ;;
             5)  run_rkhunter ;;
-            6)  return ;;
+            6)  system_monitor ;;
+            7)  return ;;
             *)  echo -e "${RED}[!] Choose the available option.${NC}" ;;
         esac
 
