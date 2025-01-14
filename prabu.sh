@@ -22,6 +22,7 @@ source sources/security_tools/monitor_traffic
 source sources/security_tools/rkhunter
 source sources/security_tools/display_error_message
 source sources/security_tools/system-monitor
+source sources/security_tools/service_status
 
 main_menu() {
     while true; do
@@ -111,7 +112,8 @@ security_menu() {
         echo -e "${GREEN}[4] Generate Strong Password${NC}"
         echo -e "${GREEN}[5] Run Rootkit Hunter${NC}"
         echo -e "${GREEN}[6] System Monitor${NC}"
-        echo -e "${GREEN}[7] Back to Main Menu${NC}"
+        echo -e "${GREEN}[7] Service Status${NC}"
+        echo -e "${GREEN}[8] Back to Main Menu${NC}"
 
         read -p "$(echo -e "${YELLOW}[?] Enter your choice: ${NC}")" choice
 
@@ -126,7 +128,8 @@ security_menu() {
                 ;;
             5)  run_rkhunter ;;
             6)  system_monitor ;;
-            7)  return ;;
+            7)  service_status ;;
+            8)  return ;;
             *)  echo -e "${RED}[!] Choose the available option.${NC}" ;;
         esac
 

@@ -1,12 +1,36 @@
 #!/bin/bash
 
-sudo apt install -y tor 
-sudo apt install -y iptables
-sudo apt install -y macchanger
-sudo apt install -y riseup-vpn 
-sudo apt install -y ufw
-sudo apt install -y debsums
-sudo apt install -y exiftool
-sudo apt install -y rkhunter
-sudo apt install -y htop
-sudo cpan install Try::Tiny Config::Simple JSON
+install_package() {
+    PACKAGE=$1
+    echo "Installing $PACKAGE..."
+    sudo apt install -y $PACKAGE
+}
+
+PACKAGES=(
+    "tor"
+    "iptables"
+    "macchanger"
+    "riseup-vpn"
+    "ufw"
+    "debsums"
+    "exiftool"
+    "rkhunter"
+    "htop"
+)
+
+for PACKAGE in "${PACKAGES[@]}"; do
+    install_package $PACKAGE
+done
+
+PERL_MODULES=(
+    "Try::Tiny"
+    "Config::Simple"
+    "JSON"
+)
+
+for MODULE in "${PERL_MODULES[@]}"; do
+    echo "Installing Perl module $MODULE..."
+    sudo cpan install $MODULE
+done
+
+echo "All installations are complete!"

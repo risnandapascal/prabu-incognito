@@ -1,4 +1,3 @@
-# Function to run Rootkit Hunter
 system_monitor() {
     echo -e "${GREEN}[*] Monitoring system...${NC}"
     htop

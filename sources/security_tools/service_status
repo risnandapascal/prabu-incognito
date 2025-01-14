@@ -1,0 +1,27 @@
+service_status() {
+    echo "Displaying the status of all services..."
+    echo "-----------------------------------"
+    
+    services=$(service --status-all 2>/dev/null)
+    
+    if [ $? -ne 0 ]; then
+        echo "Failed to retrieve service status. Please check your permissions."
+        return 1
+    fi
+
+    echo "$services"
+
+    read -p "Enter the name of the service to see more details (or press Enter to exit): " service_name
+
+    if [[ -z "$service_name" ]]; then
+        echo "Exiting the program."
+        return
+    fi
+
+    if systemctl list-units --type=service --all | grep -q "$service_name"; then
+        echo "Status of service '$service_name':"
+        systemctl status "$service_name"
+    else
+        echo "Service '$service_name' not found."
+    fi
+}
